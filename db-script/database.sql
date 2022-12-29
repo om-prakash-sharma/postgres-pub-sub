@@ -1,0 +1,1 @@
+CREATE DATABASE pub_sub_demo;

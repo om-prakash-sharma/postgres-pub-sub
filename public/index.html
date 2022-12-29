@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pub/Sub using Postgres</title>
+    <style>
+        button {
+            width: 100px;
+            height: 40px;
+            margin: 10 0;
+            border-radius: 5px;
+            border: 1px solid #fff;
+            background: #2196f3;
+            color: white;
+        }
+
+        button:hover {
+            color: #2196f3;
+            background: white;
+            border: 1px solid #2196f3;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pub/Sub using Postgres</h1>
+    <div>
+        <textarea id="txt-box" name="msg" rows="2" cols="50"></textarea>
+        <button onclick="sendNotification(event)"> Send </button>
+    </div>
+
+    <script>
+        function sendNotification(e) {
+            const msg = document.getElementById('txt-box').value;
+            fetch(`/api/send-notification?msg=${msg}`)
+                .then((response) => response.json())
+                .then((data) => console.log(data));
+        }
+    </script>
+</body>
+
+</html>
